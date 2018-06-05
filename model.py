@@ -7,7 +7,7 @@ _epochs = 10
 _batch_size = 128
 _num_utils = 128
 _layers_count = 1
-_max_tar_seq_len = 20
+_max_tar_seq_len = 25
 _encode_embed_dim = 100
 _decode_embed_dim = 100
 _lr = 0.001
@@ -19,9 +19,14 @@ _model_name = "model-mt"
 class Seq2seq(object):
     
     def __init__(self, source_vocab_size, target_vocab_size,  
-                 num_units = 128, layers_count = 1, max_tar_seq_len = 20, 
-                 encode_embed_dim = 100, decode_embed_dim = 100, 
-                 go_idx = _GO_i, eos_idx = _EOS_i, batch_size = _batch_size):
+                 num_units        = _num_utils, 
+                 layers_count     = _layers_count, 
+                 max_tar_seq_len  = _max_tar_seq_len, 
+                 encode_embed_dim = _encode_embed_dim, 
+                 decode_embed_dim = _decode_embed_dim, 
+                 go_idx           = _GO_i, 
+                 eos_idx          = _EOS_i, 
+                 batch_size       = _batch_size):
 
         self.inputs = tf.placeholder(tf.int32, [None, None], name='inputs')     # [batch_size,doc_len]
         self.targets = tf.placeholder(tf.int32, [None, None], name='targets')   # [batch_size,doc_len]
